@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163970888-2"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-163970888-2');
+      </script>
+
+        <meta charset="utf-8">
+        <title>Locked In - Part 2</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="icon.png">
+        <link href="./styles.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav class="navbar navbar-dark gimme-black">
+            <span class="navbar-brand mb-0 h1"><img id="key-logo" class="nav-icon" src="icon.png"></span>
+            <span class="pull-right"><a class="text-white" data-toggle="modal" href="#" data-target="#helpModal">Need a hint?</a></span>
+        </nav>
+        <div class='stars'></div>
+        <div class="night">
+          <div class="shooting_star"></div>
+          <div class="shooting_star"></div>
+          <div class="shooting_star"></div>
+          <div class="shooting_star"></div>
+          <div class="shooting_star"></div>
+          <div class="shooting_star"></div>
+          <div class="shooting_star"></div>
+          <div class="shooting_star"></div>
+          <div class="shooting_star"></div>
+          <div class="shooting_star"></div>
+        </div>
+        <div class="container-fluid">      
+            <div class="row">
+              <div class="col-sm">
+                <div class="empty-block">
+
+                </div>
+                  <div class="form-inline mt-2 justify-content-center">
+                    <input id="door1-code" type="text" class="form-control mr-2 key-input" placeholder="Door Password">
+                    <button id="door1-form" type="submit" class="btn btn-sm btn-secondary"><span class="target">&target;</span></button>
+                  </div>
+                  <p id="door1Error" class="text-center error-message mt-sm-1">Incorrect password!</p>
+              </div>
+              <div class="col-sm">
+                <div class="empty-block">
+                  
+                </div>
+                <div class="form-inline mt-2 justify-content-center">
+                  <input id="door2-code" type="text" class="form-control mr-2 key-input" placeholder="Door Password">
+                  <button id="door2-form" type="submit" class="btn btn-sm btn-secondary">
+                    <span class="target">&target;</span>
+                  </button>
+                </div>
+                <p id="door2Error" class="text-center error-message mt-sm-1">Incorrect password!</p>
+              </div>
+              <div class="col-sm">
+                <div class="empty-block">
+                  
+                </div>
+                <div class="form-inline mt-2 justify-content-center">
+                  <input id="door3-code" type="text" class="form-control mr-2 key-input" placeholder="Door Password">
+                  <button id="door3-form" type="submit" class="btn btn-sm btn-secondary">
+                    <span class="target">&target;</span>
+                  </button>
+                </div>
+                <p id="door3Error" class="text-center error-message mt-sm-1">Incorrect password!</p>
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm">
+                  <div class="empty-block">
+                  
+                  </div>
+                  <div class="form-inline mt-2 justify-content-center">
+                    <input id="door4-code" type="text" class="form-control mr-2 key-input" placeholder="Door Password">
+                    <button id="door4-form" type="submit" class="btn btn-sm btn-secondary">
+                      <span class="target">&target;</span>
+                    </button>
+                  </div>
+                  <p id="door4Error" class="text-center error-message mt-sm-1">Incorrect password!</p>
+                </div>
+                <div class="col-sm">
+                  <div class="empty-block">
+                  
+                  </div>
+                  <div class="form-inline mt-2 justify-content-center">
+                    <input id="door5-code" type="text" class="form-control mr-2 key-input" placeholder="Door Password">
+                    <button id="door5-form" type="submit" class="btn btn-sm btn-secondary">
+                      <span class="target">&target;</span>
+                    </button>
+                  </div>
+                  <p id="door5Error" class="text-center error-message mt-sm-1">Incorrect password!</p>
+                </div>
+                <div class="col-sm">
+                  <div class="empty-block">
+                  
+                  </div>
+                  <div class="form-inline mt-2 justify-content-center">
+                    <input id="door6-code" type="text" class="form-control mr-2 key-input" placeholder="Door Password">
+                    <button id="door6-form" type="submit" class="btn btn-sm btn-secondary">
+                      <span class="target">&target;</span>
+                    </button>
+                  </div>
+                  <p id="door6Error" class="text-center error-message mt-sm-1">Incorrect password!</p>
+                </div>
+              </div>
+
+          <div class="row mb-4">
+            <div class="col">
+              <div class="empty-block">
+                  
+              </div>
+              <div class="form-inline mt-2 justify-content-center">
+                <input id="final-code" type="text" class="form-control mr-2 key-input" placeholder="Final Password">
+                <button id="final-form" type="submit" class="btn btn-sm btn-secondary"><span class="target">&target;</span></button>
+              </div>
+              <p id="door7Error" class="text-center error-message mt-sm-1">Incorrect password!</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="container-fluid">
+          <div class="row mt-4 mb-4">
+            <div class="col-md"></div>
+            <div class="col-md"></div>
+            <div class = "col-md">
+              <br>
+              <p class="pull-right footer-text">Need a fun virtual activity for your company?  <br>
+                Contact us at <a href="mailto:armentroutmysteries@gmail.com">armentroutmysteries@gmail.com</a> 
+                for more information.
+            </div>
+          </div>
+        </div>
+
+        <!-- Here be lots of modals! -->
+
+         <!-- Helper Modal -->
+         <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">It's the Hint Section!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+               <!-- Accordian hints in here -->
+               <div class="accordion" id="accordionExample">
+                <div class="card">
+                  <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <Caption>I found the clue, but the door isn't opening?</Caption>
+                      </button>
+                    </h5>
+                  </div>
+                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                      Your clue came with a key... Sure you have the right door?
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Week 1
+                      </button>
+                    </h5>
+                  </div>
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                      Notice the colored squares, after finishing the puzzle, could they spell out a word?
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="headingThree">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Week 2
+                      </button>
+                    </h5>
+                  </div>
+                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                      Having trouble translating morse code!?  Try writing it down using: "." for quick, "_" for long, and separate symbols with "/"
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="headingFour">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Week 3
+                      </button>
+                    </h5>
+                  </div>
+                  <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                    <div class="card-body">
+                      Having trouble keeping it straight? Cross the squares you know are empty and fill in the ones that are correct.  Makes it easier to track :)
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="headingFive">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        Week 4
+                      </button>
+                    </h5>
+                  </div>
+                  <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                    <div class="card-body">
+                      Try writing the letters top to bottom in the order of the colors looking for letter patterns...
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="headingSix">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        Week 5
+                      </button>
+                    </h5>
+                  </div>
+                  <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                    <div class="card-body">
+                      Sorry you are having trouble with this! Send us a message at armentroutmysteries@gmail.com
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="headingSeven">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        Week 6
+                      </button>
+                    </h5>
+                  </div>
+                  <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+                    <div class="card-body">
+                      Sorry you are having trouble with this! Send us a message at armentroutmysteries@gmail.com
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="headingEight">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                        Still having trouble?
+                      </button>
+                    </h5>
+                  </div>
+                  <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample">
+                    <div class="card-body">
+                      Send us a message at armentroutmysteries@gmail.com
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="headingNine">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseNine">
+                        Not Getting Emails?
+                      </button>
+                    </h5>
+                  </div>
+                  <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordionExample">
+                    <div class="card-body">
+                      Check your spam folder!  Occassionally Google has been marking our emails incorrectly, don't worry I'm working on a spell to fix it
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
