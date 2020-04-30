@@ -10,11 +10,21 @@ body {
   background-color: black;
 }
 
-.empty-block {
-  height: 200px;
-  width: 150px;
+.round-it {
+  border-radius: 100px;
 }
 
+@keyframes greenPulse {
+  from { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
+  50% { background-color: #91bd09; -webkit-box-shadow: 0 0 18px #91bd09; }
+  to { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
+}
+
+.curtain {
+  animation-name: greenPulse;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
 
 /* Stars */
 .stars {
@@ -29,6 +39,68 @@ body {
 .stars {
   z-index: 0;
   background: #000 url("https://image.ibb.co/mjnygo/stars.png") repeat top center;
+}
+
+/* Curtains */
+.curtain {
+  margin: 0 auto;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+.curtain-wrapper {
+  width: 100%;
+  height: 100%;
+  background: #333;
+}
+
+.curtain-panel {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  background: #005EB8;
+  color: #fff;
+  float: left;
+  position: relative;
+  width: 50%;
+  height: 200px;
+  -webkit-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+  z-index: 2;
+}
+
+.open-left {
+  -webkit-transform: translateX(-100%) !important;
+  transform: translateX(-100%) !important;
+}
+
+.open-right {
+  -webkit-transform: translateX(100%) !important;
+  transform: translateX(100%) !important;
+}
+
+.curtain-panel-left {
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+.curtain-panel-right {
+  -webkit-box-pack: start;
+          justify-content: flex-start;
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+.curtain-content {
+  background: #333;
+  color: #fff;
+  padding: 4rem 0;
+  position: absolute;
+  text-align: center;
+  z-index: 1;
+  width: 200px;
+  height: 200px;
 }
 
 /* Shooting stars */

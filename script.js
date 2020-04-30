@@ -4,31 +4,35 @@ $(() => {
     // If you are reading this, it is cheating.  I'm not mad, just disappointed...
     const doorData = [{
       number: 1,
-      password: 'pantry'
+      password: 'clue1'
     },
     {
       number: 2,
-      password: 'guest room'
+      password: 'clue2'
     },
     {
       number: 3,
-      password: 'kitchen'
+      password: 'clue3'
     },
     {
       number: 4,
-      password: 'bedroom'
+      password: 'clue4'
     },
     {
       number: 5,
-      password: 'bathroom'
+      password: 'clue5'
     },
     {
       number: 6,
-      password: 'den'
+      password: 'clue6'
     }];
 
-    function toggleDoor(element) {
-      element.classList.toggle("doorOpen");
+    function toggleLeft(element) {
+      element.classList.toggle("open-left");
+    }
+
+    function toggleRight(element) {
+      element.classList.toggle("open-right");
     }
 
     for (let door of doorData) {
@@ -37,19 +41,19 @@ $(() => {
       });
     }
 
-    $('#final-form').click((event) => {
-      let password = $('#final-code').first().val().toLowerCase();
-      console.log(password);
-      if (password == "270985") { // doors 5, 3, 6, 4, 2, 1
-        toggleDoor(document.querySelector('#door7'));
-        if (!hasFinalSolved) $('#myModal').modal();
-        hasFinalSolved = true;
-        hideError(7);
-      } else {
-        showError(7);
-      }
+    // $('#final-form').click((event) => {
+    //   let password = $('#final-code').first().val().toLowerCase();
+    //   console.log(password);
+    //   if (password == "270985") { // doors 5, 3, 6, 4, 2, 1
+    //     toggleDoor(document.querySelector('#door7'));
+    //     if (!hasFinalSolved) $('#myModal').modal();
+    //     hasFinalSolved = true;
+    //     hideError(7);
+    //   } else {
+    //     showError(7);
+    //   }
 
-    });
+    // });
 
     $('#key-logo').click(() => {
       $('#secretModal').modal();
@@ -60,7 +64,8 @@ $(() => {
 
       if (password === doorPassword) {
         console.log(password + ' ' + doorPassword);
-        toggleDoor(document.querySelector(`#door${doorNumber}`));
+        toggleLeft(document.querySelector(`#curtain${doorNumber}-left`))
+        toggleRight(document.querySelector(`#curtain${doorNumber}-right`)) 
         hideError(doorNumber);
       } else {
         showError(doorNumber);
