@@ -4,27 +4,27 @@ $(() => {
     // If you are reading this, it is cheating.  I'm not mad, just disappointed...
     const doorData = [{
       number: 1,
-      password: 'clue1'
+      password: 'meteor shower'
     },
     {
       number: 2,
-      password: 'clue2'
+      password: 'esfhlhfsle'
     },
     {
       number: 3,
-      password: 'clue3'
+      password: 'space invaders'
     },
     {
       number: 4,
-      password: 'clue4'
+      password: 'felhlshe'
     },
     {
       number: 5,
-      password: 'clue5'
+      password: 'eflsheslhe'
     },
     {
       number: 6,
-      password: 'clue6'
+      password: 'flahelhe'
     }];
 
     function toggleLeft(element) {

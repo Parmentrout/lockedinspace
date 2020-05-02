@@ -1,5 +1,10 @@
 body {
   background-color: black !important;
+  background: #000 url("https://image.ibb.co/mjnygo/stars.png") repeat top center;
+}
+
+.key-input {
+  max-width: 200px;
 }
 
 .nav-icon {
@@ -14,14 +19,95 @@ body {
   border-radius: 100px;
 }
 
+.green-color {
+  background-color: #91bd09;
+}
+
+.blue-color {
+  background-color: #2daebf;
+}
+
+.orange-color {
+  background-color: #ff5c00;
+}
+
+.yellow-color {
+  background-color: yellow;
+}
+
+.red-color {
+  background-color: red;
+}
+
+.purple-color {
+  background-color: #aa05aa;
+}
+
+.grey-color {
+  background-color: darkslategrey;
+}
+
 @keyframes greenPulse {
   from { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
   50% { background-color: #91bd09; -webkit-box-shadow: 0 0 18px #91bd09; }
   to { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
 }
 
+@keyframes bluePulse {
+  from { background-color: #007d9a; -webkit-box-shadow: 0 0 9px #333; }
+  50% { background-color: #2daebf; -webkit-box-shadow: 0 0 18px #2daebf; }
+  to { background-color: #007d9a; -webkit-box-shadow: 0 0 9px #333; }
+}
+
+@keyframes orangePulse {
+  from { background-color: #d45500; -webkit-box-shadow: 0 0 9px #333; }
+  50% { background-color: #ff5c00; -webkit-box-shadow: 0 0 18px #ff5c00; }
+  to { background-color: #d45500; -webkit-box-shadow: 0 0 9px #333; }
+}
+
+@keyframes yellowPulse {
+  from { background-color: #ffc815; -webkit-box-shadow: 0 0 9px #333; }
+  50% { background-color: yellow; -webkit-box-shadow: 0 0 18px yellow; }
+  to { background-color: #ffc815; -webkit-box-shadow: 0 0 9px #333; }
+}
+
+@keyframes redPulse {
+  from { background-color: #bc330d; -webkit-box-shadow: 0 0 9px #333; }
+  50% { background-color: red; -webkit-box-shadow: 0 0 18px red; }
+  to { background-color: #bc330d; -webkit-box-shadow: 0 0 9px #333; }
+}
+
+@keyframes purplePulse {
+  from { background-color: purple; -webkit-box-shadow: 0 0 9px #333; }
+  50% { background-color: #aa05aa; -webkit-box-shadow: 0 0 18px #aa05aa; }
+  to { background-color: purple; -webkit-box-shadow: 0 0 9px #333; }
+}
+
+.blue-pulse {
+  animation: bluePulse;
+}
+
+.orange-pulse {
+  animation: orangePulse;
+}
+
+.yellow-pulse {
+  animation: yellowPulse;
+}
+
+.green-pulse {
+  animation: greenPulse;
+}
+
+.purple-pulse {
+  animation: purplePulse;
+}
+
+.red-pulse {
+  animation: redPulse;
+}
+
 .curtain {
-  animation-name: greenPulse;
   animation-duration: 2s;
   animation-iteration-count: infinite;
 }
@@ -30,6 +116,7 @@ body {
 .stars {
   position: absolute;
   display: block;
+  background-attachment: local;
   left: 0;
   right: 0;
   width: 100%;
@@ -38,7 +125,6 @@ body {
 
 .stars {
   z-index: 0;
-  background: #000 url("https://image.ibb.co/mjnygo/stars.png") repeat top center;
 }
 
 /* Curtains */
@@ -59,7 +145,7 @@ body {
   display: flex;
   -webkit-box-align: center;
           align-items: center;
-  background: #005EB8;
+  /* background: #005EB8; */
   color: #fff;
   float: left;
   position: relative;
