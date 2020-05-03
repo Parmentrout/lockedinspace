@@ -112,6 +112,10 @@ body {
   animation-iteration-count: infinite;
 }
 
+.error-message {
+  color: white;
+}
+
 /* Stars */
 .stars {
   position: absolute;
