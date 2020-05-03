@@ -20,7 +20,7 @@ $(() => {
     },
     {
       number: 5,
-      password: 'eflsheslhe'
+      password: 'pluto'
     },
     {
       number: 6,
