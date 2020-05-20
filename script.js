@@ -1,4 +1,12 @@
+const el = document.querySelector('#clue1');
+const machine = new SlotMachine(el, {
+  active: 1,
+  auto: false
+});
+// machine.next() and machine.prev()
 $(() => {
+
+
     hideErrors();
     const sessionKey = 'portalData';
 
