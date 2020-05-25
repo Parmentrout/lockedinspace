@@ -1,17 +1,19 @@
-const el = document.querySelector('#clue1');
-const machine = new SlotMachine(el, {
+const machine1 = new SlotMachine(document.querySelector('#clue1'), {
   active: 1,
   auto: false
 });
+const machine2 = new SlotMachine(document.querySelector('#clue2'), {
+  active: 1,
+  auto: false
+});
+
 // machine.next() and machine.prev()
 $(() => {
-
-
     hideErrors();
     const sessionKey = 'portalData';
-
     let doorData = getSessionData();
     if (!doorData) {
+      closeCryptex();
       doorData = [{
         number: 1,
         isSolved: false
@@ -37,7 +39,8 @@ $(() => {
         isSolved: false
       }];
     } else {
-      checkIfAnyDoorsOpen();
+      const allSolved = checkIfAnyDoorsOpen();
+      allSolved ? openShowArea() : closeCryptex();
     }
 
     // If you are reading this, it is cheating.  I'm not mad, just disappointed...
@@ -63,7 +66,7 @@ $(() => {
     },
     {
       number: 6,
-      password: 'flahelhe'
+      password: 'rocket'
     }];
 
     function toggleLeft(element) {
@@ -76,12 +79,26 @@ $(() => {
 
 
     function checkIfAnyDoorsOpen() {
+      let isAllSolved = true;
       for (let door of doorData) {
         if (door.isSolved) {
           toggleLeft(document.querySelector(`#curtain${door.number}-left`));
           toggleRight(document.querySelector(`#curtain${door.number}-right`));
+        } else {
+          isAllSolved = false;
         }
       }
+      return isAllSolved;
+    }
+
+    function isEverythingSolved() {
+      let isAllSolved = true;
+      for (let door of doorData) {
+        if (!door.isSolved) {
+          isAllSolved = false;
+        }
+      }
+      return isAllSolved;
     }
 
     for (let door of passwordData) {
@@ -89,24 +106,6 @@ $(() => {
         openDoor(door.number, door.password);
       });
     }
-
-    // $('#final-form').click((event) => {
-    //   let password = $('#final-code').first().val().toLowerCase();
-    //   console.log(password);
-    //   if (password == "270985") { // doors 5, 3, 6, 4, 2, 1
-    //     toggleDoor(document.querySelector('#door7'));
-    //     if (!hasFinalSolved) $('#myModal').modal();
-    //     hasFinalSolved = true;
-    //     hideError(7);
-    //   } else {
-    //     showError(7);
-    //   }
-
-    // });
-
-    $('#key-logo').click(() => {
-      $('#secretModal').modal();
-    })
 
     function openDoor(doorNumber, doorPassword) {
       let password = $(`#door${doorNumber}-code`).first().val().toLowerCase();
@@ -120,6 +119,11 @@ $(() => {
         lookupDoor.isSolved = true;
         console.log('Saving');
         saveToSession();
+
+        const allSolved = isEverythingSolved();
+        if (allSolved) {
+          openShowArea();
+        }
 
         hideError(doorNumber);
       } else {
@@ -145,6 +149,17 @@ $(() => {
       $('#door7Error').hide();
     }
 
+    function openShowArea() {
+      $('#unsolved').css('display','none');
+      $('#solved').css('display','block');
+    }
+
+    function closeCryptex() {
+      $('#solved').css('display','none');
+      $('#unsolved').css('display','block');
+    }
+
+    // Session data
     function getSessionData() {
       let result = window.localStorage.getItem(sessionKey); 
 

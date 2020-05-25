@@ -1,24 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163970888-2"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-163970888-2');
-      </script>
       <script src="https://kit.fontawesome.com/df99f802be.js" crossorigin="anonymous"></script>
 
-        <meta charset="utf-8">
-        <title>Locked In - Part 2</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/x-icon" href="icon.png">
-        <link href="./styles.css" rel="stylesheet">
+      <meta charset="utf-8">
+      <title>Locked In - Part 2</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="icon" type="image/x-icon" href="icon.png">
+      <link href="./styles.css" rel="stylesheet">
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     <body>
         <nav class="navbar navbar-dark gimme-black">
@@ -39,7 +30,9 @@
           <div class="shooting_star"></div>
         </div>
  
-        <div class="container-fluid">    
+        <div class="container-fluid">
+          
+          <div id="unsolved" style="display: none;">
             <div class="row mt-4 mb-4">
               <div class="col-sm mb-4">
                 
@@ -67,9 +60,8 @@
                     <div id="curtain2-left" class="curtain-panel orange-color curtain-panel-left">
                     </div> 
                     <div class="curtain-content round-it">
-                      <h2>Achievement Unlocked!</h2>
+                      <i class="fas fa-sun fa-5x"></i>
                     </div>
-
                     <div id="curtain2-right" class="curtain-panel orange-color curtain-panel-right">
                     </div>
                   </div>
@@ -89,7 +81,7 @@
                     </div> 
                     <div class="curtain-content round-it">
                       <i class="fab fa-galactic-senate fa-5x"></i>
-                                        </div>
+                    </div>
                     <div id="curtain3-right" class="curtain-panel blue-color curtain-panel-right">
                     </div>
                   </div>
@@ -153,7 +145,7 @@
                       <div id="curtain6-left" class="curtain-panel red-color curtain-panel-left">
                       </div> 
                       <div class="curtain-content round-it">
-                        <h2>Achievement Unlocked!</h2>
+                        <i class="fas fa-rocket fa-5x"></i>
                       </div>
   
                       <div id="curtain6-right" class="curtain-panel red-color curtain-panel-right">
@@ -169,27 +161,35 @@
                   <p id="door6Error" class="text-center error-message mt-sm-1">Incorrect password!</p>
                 </div>
               </div>
+          </div>
+         
+            <div class="row mt-4 mb-4">
+              <div class="col text-center">
+                <div id="solved" style="display: none;">
 
-          <div class="row mt-4 mb-4">
-            <div class="col">
-              <div class="curtain green-pulse round-it">
-                <div class="curtain-wrapper">
-                  <div id="curtain7-left" class="curtain-panel gimme-black curtain-panel-left">
-                  </div> 
-                  <div class="curtain-content round-it">
-                    <h2>Achievement Unlocked!</h2>
-                  </div>
-
-                  <div id="curtain7-right" class="curtain-panel gimme-black curtain-panel-right">
-                  </div>
-                </div>
-              </div>
                   <div id="clue1" class="dial">
                     <div><i class="fab fa-galactic-senate fa-2x"></i></div>
                     <div><i class="fa fa-meteor fa-2x"></i></div>
                     <div><i class="fas fa-user-astronaut fa-2x"></i></div>
-                  </div>      
-            </div>
+                  </div>
+                  <div id="clue2" class="dial">
+                    <div><i class="fab fa-galactic-senate fa-2x"></i></div>
+                    <div><i class="fa fa-meteor fa-2x"></i></div>
+                    <div><i class="fas fa-user-astronaut fa-2x"></i></div>
+                  </div>   
+                </div>
+                <div class="curtain green-pulse round-it">
+                  <div class="curtain-wrapper">
+                    <div id="curtain7-left" class="curtain-panel gimme-black curtain-panel-left">
+                    </div> 
+                    <div class="curtain-content round-it">
+                      <h2>Achievement Unlocked!</h2>
+                    </div>
+                    <div id="curtain7-right" class="curtain-panel gimme-black curtain-panel-right">
+                    </div>
+                  </div>
+                </div>    
+              </div>
           </div>
         </div>
 

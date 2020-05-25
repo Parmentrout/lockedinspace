@@ -4,11 +4,11 @@ body {
 }
 
 .key-input {
-  max-width: 200px;
+  max-width: 175px;
 }
 
 .nav-icon {
-  max-height: 40px;;
+  max-height: 40px;
 }
 
 .gimme-black {
@@ -22,6 +22,8 @@ body {
 .dial {
   height:35px;
   width:35px;
+  color: white;
+  display: inline-block;
 }
 
 .green-color {
