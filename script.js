@@ -26,6 +26,7 @@ const answer6 = new SlotMachine(document.querySelector('#clue6'), {
 // machine.next() and machine.prev()
 $(() => {
     hideErrors();
+    initializeCryptex();
     const sessionKey = 'portalData';
     let doorData = getSessionData();
     if (!doorData) {
@@ -56,7 +57,11 @@ $(() => {
       }];
     } else {
       const allSolved = checkIfAnyDoorsOpen();
-      allSolved ? openShowArea() : closeCryptex();
+      if (allSolved) {
+        openShowArea();
+      } else {
+        closeCryptex();
+      }
     }
 
     // If you are reading this, it is cheating.  I'm not mad, just disappointed...
@@ -175,12 +180,32 @@ $(() => {
       $('#unsolved').css('display','block');
     }
 
+    // Not proud of the hardcoding but I've had a little wine at this point
+    function initializeCryptex() {
+      $('#clue1').click((event) => {
+        const firstIndex = answer1.prev();
+      });
+      $('#clue2').click((event) => {
+        const firstIndex = answer2.prev();
+      });
+      $('#clue3').click((event) => {
+        const firstIndex = answer3.prev();
+      });
+      $('#clue4').click((event) => {
+        const firstIndex = answer4.prev();
+      });
+      $('#clue5').click((event) => {
+        const firstIndex = answer5.prev();
+      });
+      $('#clue6').click((event) => {
+        const firstIndex = answer6.prev();
+      });
+    }
+
     // Session data
     function getSessionData() {
       let result = window.localStorage.getItem(sessionKey); 
-
       if (!result) { return null; }
-
       return JSON.parse(result);
     }
 
