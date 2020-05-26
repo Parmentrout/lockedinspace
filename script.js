@@ -1,8 +1,24 @@
-const machine1 = new SlotMachine(document.querySelector('#clue1'), {
+const answer1 = new SlotMachine(document.querySelector('#clue1'), {
   active: 1,
   auto: false
 });
-const machine2 = new SlotMachine(document.querySelector('#clue2'), {
+const answer2 = new SlotMachine(document.querySelector('#clue2'), {
+  active: 1,
+  auto: false
+});
+const answer3 = new SlotMachine(document.querySelector('#clue3'), {
+  active: 1,
+  auto: false
+});
+const answer4 = new SlotMachine(document.querySelector('#clue4'), {
+  active: 1,
+  auto: false
+});
+const answer5 = new SlotMachine(document.querySelector('#clue5'), {
+  active: 1,
+  auto: false
+});
+const answer6 = new SlotMachine(document.querySelector('#clue6'), {
   active: 1,
   auto: false
 });
