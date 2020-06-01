@@ -1,25 +1,25 @@
 const answer1 = new SlotMachine(document.querySelector('#clue1'), {
-  active: 1,
+  active: 0,
   auto: false
 });
 const answer2 = new SlotMachine(document.querySelector('#clue2'), {
-  active: 1,
+  active: 0,
   auto: false
 });
 const answer3 = new SlotMachine(document.querySelector('#clue3'), {
-  active: 1,
+  active: 0,
   auto: false
 });
 const answer4 = new SlotMachine(document.querySelector('#clue4'), {
-  active: 1,
+  active: 0,
   auto: false
 });
 const answer5 = new SlotMachine(document.querySelector('#clue5'), {
-  active: 1,
+  active: 0,
   auto: false
 });
 const answer6 = new SlotMachine(document.querySelector('#clue6'), {
-  active: 1,
+  active: 0,
   auto: false
 });
 
@@ -180,26 +180,45 @@ $(() => {
       $('#unsolved').css('display','block');
     }
 
+    let initialCode = [0,0,0,0,0,0];
+    // 1=pluto, 2 = rocket, 3 = sun, 4 = galactic, 5 = meteor, 6 = astronaut
+    // answer = 641325
     // Not proud of the hardcoding but I've had a little wine at this point
     function initializeCryptex() {
       $('#clue1').click((event) => {
-        const firstIndex = answer1.prev();
+        const answer = answer1.prev();
+        isFinalSolved(0, answer);
       });
       $('#clue2').click((event) => {
-        const firstIndex = answer2.prev();
+        const answer = answer2.prev();
+        isFinalSolved(1, answer);
       });
       $('#clue3').click((event) => {
-        const firstIndex = answer3.prev();
+        const answer = answer3.prev();
+        isFinalSolved(2, answer);
       });
       $('#clue4').click((event) => {
-        const firstIndex = answer4.prev();
+        const answer = answer4.prev();
+        isFinalSolved(3, answer);
       });
       $('#clue5').click((event) => {
-        const firstIndex = answer5.prev();
+        const answer = answer5.prev();
+        isFinalSolved(4, answer);
       });
       $('#clue6').click((event) => {
-        const firstIndex = answer6.prev();
+        const answer = answer6.prev();
+        isFinalSolved(5, answer);
       });
+    }
+
+    function isFinalSolved(portal, number) {
+      const correctAnswer = JSON.stringify([6,4,1,3,2,5]);
+      initialCode[portal] = number;
+      const stringMe = JSON.stringify(initialCode);
+      console.log(stringMe);
+      if (correctAnswer === stringMe) {
+        console.log('Correct!');
+      }
     }
 
     // Session data

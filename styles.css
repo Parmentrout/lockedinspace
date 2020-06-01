@@ -54,6 +54,11 @@ body {
   background-color: darkslategrey;
 }
 
+.cryptex-clue {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
 @keyframes greenPulse {
   from { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
   50% { background-color: #91bd09; -webkit-box-shadow: 0 0 18px #91bd09; }
