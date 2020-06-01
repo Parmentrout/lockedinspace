@@ -215,9 +215,11 @@ $(() => {
       const correctAnswer = JSON.stringify([6,4,1,3,2,5]);
       initialCode[portal] = number;
       const stringMe = JSON.stringify(initialCode);
-      console.log(stringMe);
       if (correctAnswer === stringMe) {
         console.log('Correct!');
+        toggleLeft(document.querySelector(`#curtain7-left`));
+        toggleRight(document.querySelector(`#curtain7-right`));
+        $('#fireworks').css('display','block');
       }
     }
 
