@@ -133,12 +133,10 @@ $(() => {
       const lookupDoor = doorData.filter(d => d.number === doorNumber)[0];
       
       if ((password === doorPassword) || lookupDoor.isSolved) {
-        console.log(password + ' ' + doorPassword);
         toggleLeft(document.querySelector(`#curtain${doorNumber}-left`));
         toggleRight(document.querySelector(`#curtain${doorNumber}-right`));
 
         lookupDoor.isSolved = true;
-        console.log('Saving');
         saveToSession();
 
         const allSolved = isEverythingSolved();

@@ -16,7 +16,11 @@ body {
 }
 
 .round-it {
-  border-radius: 100px;
+  border: none;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  box-sizing: border-box;
 }
 
 .dial {
@@ -53,6 +57,10 @@ body {
 
 .grey-color {
   background-color: darkslategrey;
+}
+
+.gimme-white {
+  background: white !important;
 }
 
 .cryptex-clue {
@@ -160,6 +168,7 @@ body {
   width: 100%;
   height: 100%;
   background: #333;
+  overflow: hidden;
 }
 
 .curtain-panel {
