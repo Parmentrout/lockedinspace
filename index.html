@@ -2,9 +2,10 @@
 <html>
     <head>
       <script src="https://kit.fontawesome.com/df99f802be.js" crossorigin="anonymous"></script>
+      <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
 
       <meta charset="utf-8">
-      <title>Locked In - Part 2</title>
+      <title>Locked In Space</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="icon" type="image/x-icon" href="icon.png">
       <link href="./styles.css" rel="stylesheet">
@@ -13,7 +14,7 @@
     </head>
     <body>
         <nav class="navbar navbar-dark gimme-black">
-            <span class="navbar-brand mb-0 h1"><img id="key-logo" class="nav-icon" src="icon.png"></span>
+            <span class="navbar-brand mb-0 h1"><a href="https://armentroutmysteries.com" target="_blank"><img id="key-logo" class="nav-icon" src="icon.png"></a></span>
             <span class="pull-right"><a class="text-white" data-toggle="modal" href="#" data-target="#helpModal">Need a hint?</a></span>
         </nav>
         <div class='stars'></div>
@@ -249,13 +250,42 @@
                     <div id="curtain7-right" class="curtain-panel gimme-black curtain-panel-right">
                     </div>
                   </div>
-                </div>    
+                </div>
+                <p id="timeContainer" class="text-white">Time spent: <b><span id="totalTime"></span></b></p>
               </div>
               <div class="col"></div>
           </div>
         </div>
 
         <!-- Here be lots of modals! -->
+        <div id="emailModal" class="modal" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header"><h4 class="modal-title">Login to get started!</h4></div>
+              <div class="modal-body">
+                <h5>Thank you for playing the greatest space-themed escape room of 2020!  Please input your email and company below:
+                </h5>
+                <hr>
+                <form id="loginForm" class="mt-2" onsubmit="return false;">
+                  <div class="form-group">
+                    <label for="email">Email address:</label>
+                    <input id="emailInput" type="email" class="form-control" placeholder="Enter email" id="email" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="company">Company (optional):</label>
+                    <input id="companyInput" type="text" class="form-control" placeholder="Enter company name if this is a team event" id="company">
+                  </div>
+                  <div class="form-group form-check">
+                    <label class="form-check-label">
+                      <input id="optInInput" class="form-check-input" type="checkbox" checked> I would like to receive updates about exciting new escape rooms
+                    </label>
+                  </div>
+                  <button id="sessionSubmit" type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
 
          <!-- Helper Modal -->
          <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -369,7 +399,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card"
+                <div class="card">
                   <div class="card-header" id="headingEight">
                     <h5 class="mb-0">
                       <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">

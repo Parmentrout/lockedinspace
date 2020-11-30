@@ -23,12 +23,19 @@ const answer6 = new SlotMachine(document.querySelector('#clue6'), {
   auto: false
 });
 
+AWS.config.region = 'us-east-1';
+AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+  IdentityPoolId: 'us-east-1:687b1ef2-20a7-4a7b-908a-e23815ac0c87'
+})
+const lambda = new AWS.Lambda({apiVersion: '2015-03-31'});
+
+const sessionKey = 'lockedInSpace';
+const doorKey = 'doorData';
 // machine.next() and machine.prev()
 $(() => {
     hideErrors();
     initializeCryptex();
-    const sessionKey = 'portalData';
-    let doorData = getSessionData();
+    let doorData = getSessionData(doorKey);
     if (!doorData) {
       closeCryptex();
       doorData = [{
@@ -62,6 +69,22 @@ $(() => {
       } else {
         closeCryptex();
       }
+    }
+
+    let sessionData = getSessionData();
+    if (!sessionData) {
+      $('#sessionSubmit').click((event) => {
+        const email = $('#emailInput').val();
+        const company = $('#companyInput').val();
+        const optInInput = $('#optInInput').prop('checked');
+
+        sessionData = {email: email, company: company, optIn: optInInput};
+        saveToSession(sessionKey, sessionData);
+        saveData('start');
+        $('#emailModal').modal('hide');
+      });
+
+      $('#emailModal').modal({backdrop: 'static', keyboard: false});
     }
 
     // If you are reading this, it is cheating.  I'm not mad, just disappointed...
@@ -136,8 +159,9 @@ $(() => {
         toggleLeft(document.querySelector(`#curtain${doorNumber}-left`));
         toggleRight(document.querySelector(`#curtain${doorNumber}-right`));
 
+        saveData(`Portal ${doorNumber} opened successfully`)
         lookupDoor.isSolved = true;
-        saveToSession();
+        saveToSession(doorKey, doorData);
 
         const allSolved = isEverythingSolved();
         if (allSolved) {
@@ -146,6 +170,7 @@ $(() => {
 
         hideError(doorNumber);
       } else {
+        saveData(`Portal ${doorNumber} attempted with invalid password: ${password}`);
         showError(doorNumber);
       }
     }
@@ -166,6 +191,7 @@ $(() => {
       $('#door5Error').hide();
       $('#door6Error').hide();
       $('#door7Error').hide();
+      $('#timeContainer').hide();
     }
 
     function openShowArea() {
@@ -214,26 +240,85 @@ $(() => {
       initialCode[portal] = number;
       const stringMe = JSON.stringify(initialCode);
       if (correctAnswer === stringMe) {
-        console.log('Correct!');
+        saveData('stop');
+        $('#timeContainer').show();
         toggleLeft(document.querySelector(`#curtain7-left`));
         toggleRight(document.querySelector(`#curtain7-right`));
         $('#fireworks').css('display','block');
       }
     }
 
+    function saveData(event) {
+      const payload = `{
+        "puzzle": "${sessionKey}",
+        "email": "${sessionData.email}",
+        "company": "${sessionData.company}",
+        "optIn": ${sessionData.optIn},
+        "eventName": "${event}",
+        "time": ${Date.now()}
+      }`;
+      
+      var params = {
+        FunctionName: 'mystery-results-v2-put', // the lambda function we are going to invoke
+        InvocationType: 'RequestResponse',
+        Payload: payload
+      };
+      lambda.invoke(params, function(err, data) {
+        if (err) {
+          console.error(err);
+        } else {
+          const json = JSON.parse(data.Payload);
+          if (json && json.data && json.data.events) {
+            let allEvents = json.data.events;
+            let startTime = 0;
+            let endTime = 0;
+        
+            for (let event of allEvents) {
+              if (event.name === 'start' && startTime === 0) { // First one
+                startTime = event.time;
+              }
+              if (event.name === 'stop' && endTime === 0) {
+                endTime = event.time;
+              }
+            }
+            const totalTime = endTime - startTime;
+            if (totalTime > 0) {
+              $('#totalTime').text(msToTime(totalTime));
+            }
+          }
+        }
+      })
+    }
+
+
     // Session data
-    function getSessionData() {
-      let result = window.localStorage.getItem(sessionKey); 
+    function getSessionData(key) {
+      key = key || sessionKey;
+      let result = window.sessionStorage.getItem(key); 
       if (!result) { return null; }
       return JSON.parse(result);
     }
 
-    function saveToSession() {
-      removeFromSession();
-      window.localStorage.setItem(sessionKey, JSON.stringify(doorData));
+    function saveToSession(key, data) {
+      removeFromSession(key);
+      window.sessionStorage.setItem(key, JSON.stringify(data));
     }
 
-    function removeFromSession() {
-      window.localStorage.removeItem(sessionKey);
+    function removeFromSession(key) {
+      window.sessionStorage.removeItem(key);
     }
+
+     //Time function
+     function msToTime(duration) {
+      var milliseconds = parseInt((duration%1000)/100)
+          , seconds = parseInt((duration/1000)%60)
+          , minutes = parseInt((duration/(1000*60))%60)
+          , hours = parseInt((duration/(1000*60*60))%24);
+  
+      hours = (hours < 10) ? "0" + hours : hours;
+      minutes = (minutes < 10) ? "0" + minutes : minutes;
+      seconds = (seconds < 10) ? "0" + seconds : seconds;
+  
+      return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+  }
 })
